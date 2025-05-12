@@ -8,4 +8,12 @@ La versión 2025 utiliza 8 salidas de Teensy. Por error, las últimas 2 salidas 
 
 La versión old utilizaba MAX/MPS como intermediario para convertir MIDI a PWM. Ahora aparece directamente como dispositivo MIDI bajo el nombre de "strangeMidi"
 
+### PCB Front
+
+![](./front.png)
+
+![](./layout.png)
+
+[schematic](./strangeTrig_sch.pdf)
+
 
