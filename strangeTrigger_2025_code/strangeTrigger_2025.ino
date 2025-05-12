@@ -6,9 +6,8 @@ byte       canal = 1;
 byte       vel = 0;
 
 byte      outPin[]    =   {3, 4, 5, 6, 9, 10, 15, 16}; // PINES DE SALIDA
-bool      outState[]  =   {0, 0, 0, 0, 0, 0,  0,  0}; //Estado de cada canal (low o high)
-byte      notas[]     =   {24, 25, 26, 27, 28, 29, 30, 31};
-
+byte      notas[]     =   {24, 25, 26, 27, 28, 29, 30, 31}; 
+//NOTAS RECONOCIBLES POR MIDI EN LA OCTAVA 0 (C0-G0)
 
 void setup() {
   Serial.begin(115200);
