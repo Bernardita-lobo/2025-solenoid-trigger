@@ -1,2 +1,11 @@
 # strangeTrigger
-Teensy output controller from MAX/MSP 8 controlled by APC40
+
+Controlador de motores DC vía MIDI/USB
+
+Mapea hasta 8 motores a las salidas de la Teensy. Diseñada para 3.2
+
+La versión 2025 utiliza 8 salidas de Teensy. Por error, las últimas 2 salidas de la versión (pines D15 y D16) solo entregan valores digitales, ya que esas salidas no están diseñadas para utilizar PWM
+
+La versión old utilizaba MAX/MPS como intermediario para convertir MIDI a PWM. Ahora aparece directamente como dispositivo MIDI bajo el nombre de "strangeMidi"
+
+
