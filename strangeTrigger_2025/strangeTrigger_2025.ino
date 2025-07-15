@@ -1,17 +1,26 @@
 // codigo original @misaaaaaa
 // v0.0.1 2025-05-11
 
+// siguientes versiones
+// por @misaaaaaa y @montoyamoraga
+
 #define channels 8
 
 byte nota = 0;
 byte canal = 1;
 byte vel = 0;
 
-byte outPin[] = { 3, 4, 5, 6, 9, 10, 15, 16 };  // PINES DE SALIDA
-byte notas[] = { 24, 25, 26, 27, 28, 29, 30, 31 };
-//NOTAS RECONOCIBLES POR MIDI EN LA OCTAVA 0 (C0-G0)
+// pines de salida
+byte outPin[] = { 3, 4, 5, 6, 9, 10, 15, 16 };
 
+//NOTAS RECONOCIBLES POR MIDI EN LA OCTAVA 0 (C0-G0)
+byte notas[] = { 24, 25, 26, 27, 28, 29, 30, 31 };
+
+// setup() ocurre una vez al principio
 void setup() {
+
+  setupLedInterno();
+
   Serial.begin(115200);
   usbMIDI.setHandleNoteOn(myNoteOn);
   usbMIDI.setHandleNoteOff(myNoteOff);
@@ -23,8 +32,9 @@ void setup() {
   }
 }
 
+// loop() ocurre despues de setup(), en bucle
 void loop() {
-  pin13On();
+  loopLedInterno();
 
   usbMIDI.read();
   for (int i = 0; i < channels - 2; i++) {
@@ -41,6 +51,7 @@ void loop() {
   }
   Serial.println(nota);
 }
+
 
 
 void myNoteOn(byte channel, byte note, byte velocity) {
@@ -83,9 +94,15 @@ elapsedMillis blinking;
 
 bool led13State = 0;
 
-void pin13On() {
-  //Funcion para evidenciar que Teensy funciona bien, encendiendo y apagando el led interno
+// funciones para evidenciar funcionamiento Teensy
+// enciende y apaga el LED interno
+
+void setupLedInterno() {
   pinMode(13, OUTPUT);
+}
+
+void loopLedInterno() {
+
   if (blinking >= 900 && led13State == HIGH) {
     led13State = LOW;
     blinking = blinking - 900;
