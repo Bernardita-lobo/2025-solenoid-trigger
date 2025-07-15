@@ -1,12 +1,14 @@
+// codigo original @misaaaaaa
+// v0.0.1 2025-05-11
 
 #define channels 8
 
-byte       nota = 0;
-byte       canal = 1;
-byte       vel = 0;
+byte nota = 0;
+byte canal = 1;
+byte vel = 0;
 
-byte      outPin[]    =   {3, 4, 5, 6, 9, 10, 15, 16}; // PINES DE SALIDA
-byte      notas[]     =   {24, 25, 26, 27, 28, 29, 30, 31}; 
+byte outPin[] = { 3, 4, 5, 6, 9, 10, 15, 16 };  // PINES DE SALIDA
+byte notas[] = { 24, 25, 26, 27, 28, 29, 30, 31 };
 //NOTAS RECONOCIBLES POR MIDI EN LA OCTAVA 0 (C0-G0)
 
 void setup() {
@@ -25,31 +27,15 @@ void loop() {
   pin13On();
 
   usbMIDI.read();
-  for (int i = 0; i < channels-2; i++) {
-    if (nota == notas[i] || 
-        nota == notas[i] + 12 ||
-        nota == notas[i] + 24 ||
-        nota == notas[i] + 36 ||
-        nota == notas[i] + 48 ||
-        nota == notas[i] + 60 ||
-        nota == notas[i] + 72 ||
-        nota == notas[i] + 84 ||
-        nota == notas[i] + 96 ) {
+  for (int i = 0; i < channels - 2; i++) {
+    if (nota == notas[i] || nota == notas[i] + 12 || nota == notas[i] + 24 || nota == notas[i] + 36 || nota == notas[i] + 48 || nota == notas[i] + 60 || nota == notas[i] + 72 || nota == notas[i] + 84 || nota == notas[i] + 96) {
       analogWrite(outPin[i], vel);
     }
   }
 
 
   for (int i = 6; i < channels; i++) {
-    if (nota == notas[i] || 
-        nota == notas[i] + 12 ||
-        nota == notas[i] + 24 ||
-        nota == notas[i] + 36 ||
-        nota == notas[i] + 48 ||
-        nota == notas[i] + 60 ||
-        nota == notas[i] + 72 ||
-        nota == notas[i] + 84 ||
-        nota == notas[i] + 96 ) {
+    if (nota == notas[i] || nota == notas[i] + 12 || nota == notas[i] + 24 || nota == notas[i] + 36 || nota == notas[i] + 48 || nota == notas[i] + 60 || nota == notas[i] + 72 || nota == notas[i] + 84 || nota == notas[i] + 96) {
       digitalWrite(outPin[i], vel);
     }
   }
@@ -94,7 +80,9 @@ void myControlChange(byte channel, byte control, byte value) {
 }
 
 elapsedMillis blinking;
-bool          led13State = 0;
+
+bool led13State = 0;
+
 void pin13On() {
   //Funcion para evidenciar que Teensy funciona bien, encendiendo y apagando el led interno
   pinMode(13, OUTPUT);
@@ -107,5 +95,4 @@ void pin13On() {
     blinking = blinking - 100;
   }
   digitalWrite(13, led13State);
-
 }
