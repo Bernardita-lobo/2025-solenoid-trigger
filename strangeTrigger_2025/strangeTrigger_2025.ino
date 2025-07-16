@@ -33,6 +33,10 @@ byte outPin[] = { 3, 4, 5, 6, 9, 10, 15, 16 };
 //NOTAS RECONOCIBLES POR MIDI EN LA OCTAVA 0 (C0-G0)
 byte notas[] = { 24, 25, 26, 27, 28, 29, 30, 31 };
 
+elapsedMillis blinking;
+
+bool led13State = 0;
+
 // setup() ocurre una vez al principio
 void setup() {
 
@@ -55,21 +59,21 @@ void loop() {
 
   usbMIDI.read();
   for (int i = 0; i < channels - 2; i++) {
-    if (nota == notas[i] || nota == notas[i] + 12 || nota == notas[i] + 24 || nota == notas[i] + 36 || nota == notas[i] + 48 || nota == notas[i] + 60 || nota == notas[i] + 72 || nota == notas[i] + 84 || nota == notas[i] + 96) {
+    // if (nota == notas[i] || nota == notas[i] + 12 || nota == notas[i] + 24 || nota == notas[i] + 36 || nota == notas[i] + 48 || nota == notas[i] + 60 || nota == notas[i] + 72 || nota == notas[i] + 84 || nota == notas[i] + 96) {
+    if (nota == notas[i] % 12) {
       analogWrite(outPin[i], vel);
     }
   }
 
 
   for (int i = 6; i < channels; i++) {
-    if (nota == notas[i] || nota == notas[i] + 12 || nota == notas[i] + 24 || nota == notas[i] + 36 || nota == notas[i] + 48 || nota == notas[i] + 60 || nota == notas[i] + 72 || nota == notas[i] + 84 || nota == notas[i] + 96) {
+    // if (nota == notas[i] || nota == notas[i] + 12 || nota == notas[i] + 24 || nota == notas[i] + 36 || nota == notas[i] + 48 || nota == notas[i] + 60 || nota == notas[i] + 72 || nota == notas[i] + 84 || nota == notas[i] + 96) {
+    if (nota == notas[i] % 12) {
       digitalWrite(outPin[i], vel);
     }
   }
   Serial.println(nota);
 }
-
-
 
 void myNoteOn(byte channel, byte note, byte velocity) {
   // When using MIDIx4 or MIDIx16, usbMIDI.getCable() can be used
@@ -106,10 +110,6 @@ void myControlChange(byte channel, byte control, byte value) {
   Serial.print(", value=");
   Serial.println(value, DEC);
 }
-
-elapsedMillis blinking;
-
-bool led13State = 0;
 
 // funciones para evidenciar funcionamiento Teensy
 // enciende y apaga el LED interno
