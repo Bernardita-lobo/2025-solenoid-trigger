@@ -1,3 +1,8 @@
+
+elapsedMillis blinking;
+
+bool led13State = 0;
+
 void setupLedInterno() {
   pinMode(13, OUTPUT);
 }
