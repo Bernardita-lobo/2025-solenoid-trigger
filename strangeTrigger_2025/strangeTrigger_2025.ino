@@ -42,10 +42,10 @@ void setup() {
 
   setupLedInterno();
 
+  setupMIDI();
+
   Serial.begin(115200);
-  usbMIDI.setHandleNoteOn(myNoteOn);
-  usbMIDI.setHandleNoteOff(myNoteOff);
-  usbMIDI.setHandleControlChange(myControlChange);
+
 
   for (int i = 0; i < channels; i++) {
     pinMode(outPin[i], OUTPUT);
@@ -129,4 +129,10 @@ void loopLedInterno() {
     blinking = blinking - 100;
   }
   digitalWrite(13, led13State);
+}
+
+void setupMIDI() {
+  usbMIDI.setHandleNoteOn(myNoteOn);
+  usbMIDI.setHandleNoteOff(myNoteOff);
+  usbMIDI.setHandleControlChange(myControlChange);
 }
