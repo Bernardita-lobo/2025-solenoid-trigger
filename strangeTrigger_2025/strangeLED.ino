@@ -1,4 +1,3 @@
-
 elapsedMillis blinking;
 
 bool led13State = 0;
