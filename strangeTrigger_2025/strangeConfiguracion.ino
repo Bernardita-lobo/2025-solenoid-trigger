@@ -1,4 +1,4 @@
-#define channels 8
+#define solenoides 8
 
 byte nota = 0;
 byte canal = 1;
@@ -12,7 +12,7 @@ byte notas[] = { 24, 26, 28, 29, 31, 33, 35, 34 };
 byte outPin[] = { 3, 4, 5, 6, 9, 10, 15, 16 };
 
 void setupPinesSalida() {
-  for (int i = 0; i < channels; i++) {
+  for (int i = 0; i < solenoides; i++) {
     pinMode(outPin[i], OUTPUT);
   }
 }
