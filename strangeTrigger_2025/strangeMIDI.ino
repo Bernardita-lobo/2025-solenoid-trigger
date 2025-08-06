@@ -4,6 +4,24 @@ void setupMIDI() {
   usbMIDI.setHandleControlChange(myControlChange);
 }
 
+void loopMIDI() {
+  usbMIDI.read();
+  for (int i = 0; i < channels - 2; i++) {
+    // if (nota == notas[i] || nota == notas[i] + 12 || nota == notas[i] + 24 || nota == notas[i] + 36 || nota == notas[i] + 48 || nota == notas[i] + 60 || nota == notas[i] + 72 || nota == notas[i] + 84 || nota == notas[i] + 96) {
+    if (nota == notas[i] % 12) {
+      analogWrite(outPin[i], vel);
+    }
+  }
+
+
+  for (int i = 6; i < channels; i++) {
+    // if (nota == notas[i] || nota == notas[i] + 12 || nota == notas[i] + 24 || nota == notas[i] + 36 || nota == notas[i] + 48 || nota == notas[i] + 60 || nota == notas[i] + 72 || nota == notas[i] + 84 || nota == notas[i] + 96) {
+    if (nota == notas[i] % 12) {
+      digitalWrite(outPin[i], vel);
+    }
+  }
+}
+
 void myControlChange(byte channel, byte control, byte value) {
   Serial.print("Control Change, ch=");
   Serial.print(channel, DEC);
