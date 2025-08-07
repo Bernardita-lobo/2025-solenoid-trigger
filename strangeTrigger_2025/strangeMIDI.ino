@@ -14,6 +14,7 @@ void loopMIDI() {
       int ancho = map(vel, 0, 127, anchoMinimo, anchoMaximo);
       if (notaON[i]) {
         digitalWrite(outPin[i], 1);
+        // analogWrite(outPin[i], 255);
       } else {
         digitalWrite(outPin[i], 0);
       }

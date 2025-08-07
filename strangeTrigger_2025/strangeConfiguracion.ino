@@ -6,8 +6,8 @@ byte canal = 1;
 byte vel = 0;
 
 // en milisegundos
-int anchoMinimo = 5;
-int anchoMaximo = 50;
+int anchoMinimo = 10;
+int anchoMaximo = 100;
 
 //NOTAS RECONOCIBLES POR MIDI EN LA OCTAVA 0 (C0-G0)
 // do, re, mi, fa, sol, la, si, sib
