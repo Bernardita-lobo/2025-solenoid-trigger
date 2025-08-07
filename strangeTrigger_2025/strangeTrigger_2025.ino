@@ -5,6 +5,7 @@ void setup() {
   setupPinesSalida();
 
   setupMIDI();
+
 }
 
 void loop() {
