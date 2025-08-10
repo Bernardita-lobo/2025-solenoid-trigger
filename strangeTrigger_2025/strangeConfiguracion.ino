@@ -1,4 +1,4 @@
-#define solenoides 8
+#define numeroSolenoides 8
 
 // parte en re bemol para que no emita
 byte nota = 1;
@@ -6,8 +6,8 @@ byte canal = 1;
 byte vel = 0;
 
 // en milisegundos
-int anchoMinimo = 10;
-int anchoMaximo = 100;
+int anchoMinimo = 25;
+int anchoMaximo = 60;
 
 //NOTAS RECONOCIBLES POR MIDI EN LA OCTAVA 0 (C0-G0)
 // do, re, mi, fa, sol, la, si, sib
@@ -17,7 +17,7 @@ byte notas[] = { 24, 26, 28, 29, 31, 33, 35, 34 };
 byte outPin[] = { 3, 4, 5, 6, 9, 10, 15, 16 };
 
 void setupPinesSalida() {
-  for (int i = 0; i < solenoides; i++) {
+  for (int i = 0; i < numeroSolenoides; i++) {
     pinMode(outPin[i], OUTPUT);
     digitalWrite(outPin[i], 0);
   }
