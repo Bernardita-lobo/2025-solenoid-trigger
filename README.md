@@ -20,5 +20,7 @@ La versión old utilizaba MAX/MPS como intermediario para convertir MIDI a PWM. 
 
 [schematic](./strangeTrig_sch.pdf)
 
+(soy Bernardita y este texto es de prueba. Por favor Aaron eliminar)
+
 
 
